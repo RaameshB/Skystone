@@ -13,6 +13,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefau
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 import org.firstinspires.ftc.teamcode.Robot.Drive;
 import org.firstinspires.ftc.teamcode.Robot.Path;
+import org.firstinspires.ftc.teamcode.Robot.Point;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -360,15 +361,35 @@ public class VuForia extends LinearOpMode {
 
         path1.addPoint(robot.encoderDistanceX(),robot.encoderDistanceY());
 
-        path1.addPoint(12,positionOfSkyStone);
+        path1.addPoint(6,positionOfSkyStone);
 
-        path1.addPoint(12,0,-90);
+        path1.addPoint(6,0,-90);
 
-        path1.addPoint(12,-84,-90);
+        path1.addPoint(6,-84,-90);
+
+        path1.addPoint(30,-84);
 
         robot.runPath(path1,0.7,1);
 
+        robot.foundationServo.setPosition(0);
 
+        path1.clear();
+
+        path1.addPoint(robot.x(),robot.y(),-90);
+
+        path1.addPoint(6,-72,0);
+
+        path1.addPoint(2,-48,0);
+
+        robot.runPath(path1,0.7,1);
+
+        path1.clear();
+
+        a = 0;
+
+        simpleEncoders(2,-96,0.7,1);
+
+        simpleEncoders(2,-36,0.7,1);
 
     }
     double a = 0;
@@ -386,15 +407,15 @@ public class VuForia extends LinearOpMode {
         robot.runPath(path,power,drift);
         path.clear();
     }
-    void simpleMotorNoReset(double distX, double distY, double power, double drift) {
-        path.addPoint(distX,distY,a);
-        robot.runPath(path,power,drift);
-    }
-    void simpleMotorNoReset(double distX, double distY, double power, double drift, double angle) {
-        a = angle;
-        path.addPoint(distX,distY,a);
-        robot.runPath(path,power,drift);
-    }
+//    void simpleMotorNoReset(double distX, double distY, double power, double drift) {
+//        path.addPoint(distX,distY,a);
+//        robot.runPath(path,power,drift);
+//    }
+//    void simpleMotorNoReset(double distX, double distY, double power, double drift, double angle) {
+//        a = angle;
+//        path.addPoint(distX,distY,a);
+//        robot.runPath(path,power,drift);
+//    }
 
 
 
