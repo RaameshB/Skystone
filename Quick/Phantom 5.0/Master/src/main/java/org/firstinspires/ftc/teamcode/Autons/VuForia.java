@@ -1,5 +1,8 @@
 package org.firstinspires.ftc.teamcode.Autons;
 
+import android.hardware.camera2.CameraDevice;
+
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -24,6 +27,8 @@ import static org.firstinspires.ftc.robotcore.external.navigation.AxesOrder.YZX;
 import static org.firstinspires.ftc.robotcore.external.navigation.AxesReference.EXTRINSIC;
 import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer.CameraDirection.BACK;
 
+
+@Autonomous(name = "VuAuto")
 public class VuForia extends LinearOpMode {
 
     boolean pastWaitForStart = false;
@@ -56,7 +61,7 @@ public class VuForia extends LinearOpMode {
     private static final float quadField  = 36 * mmPerInch;
 
     // Class Members
-    private OpenGLMatrix lastLocation = null;
+    private OpenGLMatrix lastLocation = new OpenGLMatrix();
     private VuforiaLocalizer vuforia = null;
     private boolean targetVisible = false;
     private float phoneXRotate    = 0;
@@ -75,6 +80,7 @@ public class VuForia extends LinearOpMode {
     double translationZ;
 
     boolean isThreadStopRequested;
+
 
     Runnable r = new Runnable() {
         int cameraMonitorViewId;
@@ -213,6 +219,9 @@ public class VuForia extends LinearOpMode {
             }
         }
         void function2() {
+
+
+
             targetsSkyStone.activate();
             while (!isStopRequested() && !isThreadStopRequested) {
                 /** // check all the trackable targets to see which one (if any) is visible. **/
@@ -355,7 +364,7 @@ public class VuForia extends LinearOpMode {
 
         //TODO: ADD Distance Sensor / Color Sensor
 
-        while (!gamepad1.a && opModeIsActive() && (stopWatch.seconds() < 5));
+        while (!gamepad1.a && opModeIsActive() && (stopWatch.seconds() < 3));
 
         robot.stop();
 

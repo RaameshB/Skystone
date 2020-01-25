@@ -1,13 +1,14 @@
 package org.firstinspires.ftc.teamcode.RunnableProgramsAndMore;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.teamcode.PhantomConfig4200X;
 import org.firstinspires.ftc.teamcode.RunnableProgramsAndMore.proto.BlueAuto;
 
-
-@Autonomous(name="BLUE found Close",group="autonomous")
-public final class BridgeIMUBlue2XRaamesh extends BlueAuto {
+@Disabled
+@Autonomous(name="Suggestion Box",group="autonomous")
+public final class SuggetionBox extends BlueAuto {
 
     PhantomConfig4200X robot = new PhantomConfig4200X();
 
@@ -27,7 +28,7 @@ public final class BridgeIMUBlue2XRaamesh extends BlueAuto {
         waitForStart();
         robot.armServo.setPosition(0.7);
         MecanumInstance.imuDrive(0,1/3.333333333333333*10/7,0.7);
-        MecanumInstance.imuDrive(-90,0.6*10/7,0.7);
+        MecanumInstance.imuDrive(-90,(0.6*10/7) + 0.6,0.7);
         MecanumInstance.imuDrive(0,0.9*10/7,0.7);
         MecanumInstance.imuDrive(0,0.04,1*0.7);
         //sleep(3000);
@@ -47,10 +48,10 @@ public final class BridgeIMUBlue2XRaamesh extends BlueAuto {
 
         MecanumInstance.imuDrive(180,0.4*10/7,1*0.7);
 
-        MecanumInstance.imuDrive(-90,((0.625*7/10)*10/7)+0.02,0.7);
+        MecanumInstance.imuDrive(-90,((0.625*7/10)*10/7)+0.06,0.7);
 
         //   MecanumInstance.imuDrive(90,3,0.5f);
-        MecanumInstance.imuDrive(180,(1.6*10/7*2/3)-0.32,0.7);
+        MecanumInstance.imuDrive(180,(1.6*10/7*2/3)-0.32 + 0.6,0.7);
 
     }
 }

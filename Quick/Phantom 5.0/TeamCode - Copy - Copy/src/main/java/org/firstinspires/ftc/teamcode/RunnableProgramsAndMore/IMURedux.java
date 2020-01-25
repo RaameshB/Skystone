@@ -149,9 +149,9 @@ public class IMURedux extends MecanumRedux2 {
            // e.telemetry.addData("lastangles", robot.lastAngles.firstAngle);
             e.telemetry.update();
             robot.frontRight.setPower((-Math.sin(Math.toRadians(angle)) * power) - checkDirection());
-            robot.frontLeft.setPower((Math.cos(Math.toRadians(angle)) * power) + checkDirection());
-            robot.backRight.setPower((Math.cos(Math.toRadians(angle)) * power) - checkDirection());
-            robot.backLeft.setPower((-Math.sin(Math.toRadians(angle)) * power) + checkDirection());
+            robot.frontLeft.setPower((Math.cos(Math.toRadians(angle)) * power) +   checkDirection());
+            robot.backRight.setPower((Math.cos(Math.toRadians(angle)) * power) -   checkDirection());
+            robot.backLeft.setPower((-Math.sin(Math.toRadians(angle)) * power) +   checkDirection());
         //}
     }
     private double checkDirection()
@@ -236,7 +236,7 @@ public class IMURedux extends MecanumRedux2 {
     public void imuTurn (double angle, double maxTime) {
         robot.globalAngle = -angle;
 
-        gain = 0.002f;
+        gain = 0.02f;
 
         ElapsedTime time = new ElapsedTime();
 
@@ -251,7 +251,7 @@ public class IMURedux extends MecanumRedux2 {
             robot.backLeft.setPower(checkDirection());
             x += 0.05;
             if (time.seconds() > x) {
-                gain += 0.001;
+                gain += 0.005;
             }
         }
 

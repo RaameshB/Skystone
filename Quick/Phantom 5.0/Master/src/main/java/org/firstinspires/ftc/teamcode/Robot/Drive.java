@@ -116,7 +116,7 @@ public class Drive extends Config {
 //    double ROBOT_WEIGHT_KG = 10;
 //    double WHEEL_FRICTION = 3;
 
-    int COUNTS_PER_REVOLUTION = 1440;
+    double COUNTS_PER_REVOLUTION = 1440 / 1.5;
     double WHEEL_DIAMETER_INCHES = 1.5;
 
 
@@ -427,7 +427,7 @@ public class Drive extends Config {
         // You will have to experiment with your robot to get small smooth direction changes
         // to stay on a straight line.
         double correction;
-        double gain = 0.05;
+        double gain = 0.0125;
 
         correction = -(checkAngle-setAngle) * gain;        // reverse sign of angle for correction.
 
